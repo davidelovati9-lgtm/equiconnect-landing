@@ -68,11 +68,22 @@
 
     /* ── Hero ───────────────────────────── */
     .hero {
-      padding: 80px 0 160px;
+      padding: 96px 0 170px;
       background:
-        radial-gradient(ellipse 800px 500px at 85% 10%, rgba(227, 169, 60, 0.12), transparent),
-        radial-gradient(ellipse 600px 400px at 10% 90%, rgba(46, 75, 60, 0.08), transparent);
+        linear-gradient(rgba(16, 27, 21, 0.72), rgba(16, 27, 21, 0.84)),
+        url('https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=1920&q=75&auto=format&fit=crop') center / cover no-repeat;
     }
+    .hero h1 { color: var(--crema) !important; }
+    .hero p.lead { color: rgba(250, 246, 239, 0.78); }
+    .hero .badge {
+      background: rgba(250, 246, 239, 0.08); color: var(--oro);
+      border: 1px solid rgba(227, 169, 60, 0.4);
+      text-transform: uppercase; letter-spacing: 0.14em; font-size: 11.5px;
+    }
+    .hero .btn-ghost { border-color: rgba(250, 246, 239, 0.5); color: var(--crema); }
+    .hero .btn-ghost:hover { border-color: var(--crema); background: rgba(250, 246, 239, 0.08); }
+    .hero-proof { color: rgba(250, 246, 239, 0.65) !important; }
+    .hero-proof strong { color: var(--oro) !important; }
     .hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 72px; align-items: center; }
     .badge {
       display: inline-flex; align-items: center; gap: 8px;
@@ -133,11 +144,12 @@
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
     .cat-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(43, 43, 38, 0.1); }
-    .cat-icon {
-      width: 52px; height: 52px; border-radius: 14px;
-      background: var(--sabbia); display: flex; align-items: center; justify-content: center;
-      font-size: 26px; margin-bottom: 18px;
+    .cat-num {
+      font-family: 'Fraunces', serif; font-size: 15px; font-weight: 600;
+      color: var(--oro); letter-spacing: 0.18em; margin-bottom: 16px;
+      display: flex; align-items: center; gap: 12px;
     }
+    .cat-num::after { content: ''; flex: 1; height: 1px; background: rgba(46, 75, 60, 0.15); }
     .cat-card h3 { font-size: 20px; color: var(--verde-scuro); margin-bottom: 8px; }
     .cat-card p { font-size: 14.5px; color: var(--testo-soft); }
 
@@ -176,8 +188,10 @@
 
     /* CTA finale */
     .cta-final {
-      background: linear-gradient(135deg, var(--cuoio), var(--cuoio-scuro));
-      border-radius: 28px; padding: 72px 48px; text-align: center; color: var(--bianco);
+      background:
+        linear-gradient(rgba(24, 38, 30, 0.78), rgba(24, 38, 30, 0.85)),
+        url('https://images.unsplash.com/photo-1598974357801-cbca100e65d3?w=1600&q=75&auto=format&fit=crop') center / cover no-repeat;
+      border-radius: 28px; padding: 80px 48px; text-align: center; color: var(--crema);
       position: relative; overflow: hidden;
     }
     .cta-final::before {
@@ -212,17 +226,11 @@
     .card-profile { animation: float-a 5s ease-in-out infinite alternate; }
     .card-review { animation: float-b 4s ease-in-out 1s infinite alternate; }
 
-    /* blob decorativi hero */
     .hero { position: relative; overflow: hidden; }
-    .blob { position: absolute; border-radius: 50%; filter: blur(70px); pointer-events: none; z-index: 0; }
-    .blob-1 { width: 380px; height: 380px; background: rgba(227, 169, 60, 0.22); top: -80px; right: -60px; animation: drift-1 14s ease-in-out infinite alternate; }
-    .blob-2 { width: 320px; height: 320px; background: rgba(46, 75, 60, 0.14); bottom: -60px; left: -80px; animation: drift-2 18s ease-in-out infinite alternate; }
-    @keyframes drift-1 { from { transform: translate(0, 0) scale(1); } to { transform: translate(-60px, 50px) scale(1.15); } }
-    @keyframes drift-2 { from { transform: translate(0, 0) scale(1); } to { transform: translate(70px, -40px) scale(1.1); } }
     .hero .container { position: relative; z-index: 1; }
 
     /* parola rotante nel titolo */
-    .rotor { display: inline-block; position: relative; color: var(--cuoio); font-style: italic; white-space: nowrap; }
+    .rotor { display: inline-block; position: relative; color: var(--oro); font-style: italic; white-space: nowrap; }
     .rotor .word { display: inline-block; transition: opacity 0.35s ease, transform 0.35s ease; }
     .rotor .word.out { opacity: 0; transform: translateY(-14px); }
     .rotor .word.in { opacity: 0; transform: translateY(14px); transition: none; }
@@ -239,15 +247,21 @@
     header { transition: box-shadow 0.3s ease; }
     header.scrolled { box-shadow: 0 6px 24px rgba(43, 43, 38, 0.08); }
 
-    /* icone categorie animate all'hover */
-    .cat-card .cat-icon { transition: transform 0.25s ease; }
-    .cat-card:hover .cat-icon { transform: rotate(-8deg) scale(1.15); }
-
-    /* cavallo line-art disegnato allo scroll */
-    .horse-figure { display: flex; justify-content: center; margin-bottom: 4px; }
-    .horse-figure svg { width: min(300px, 65vw); height: auto; overflow: visible; }
-    .horse-figure path { fill: none; stroke: var(--verde); stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
-    .horse-figure .mane { stroke: var(--oro); stroke-width: 3; }
+    /* banda editoriale con foto */
+    .editorial { position: relative; overflow: hidden; padding: 130px 0; }
+    .editorial-img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; filter: grayscale(100%) contrast(1.05) brightness(0.55);
+    }
+    .editorial-inner { position: relative; text-align: center; max-width: 760px; margin: 0 auto; padding: 0 24px; }
+    .editorial-quote {
+      font-family: 'Fraunces', serif; font-style: italic; font-weight: 500;
+      font-size: clamp(26px, 3.6vw, 40px); line-height: 1.3; color: var(--crema);
+    }
+    .editorial-sub {
+      margin-top: 24px; font-size: 12.5px; font-weight: 600; color: var(--oro);
+      text-transform: uppercase; letter-spacing: 0.22em;
+    }
 
     /* parallax hero */
     .hero-visual { transition: transform 0.25s ease-out; will-change: transform; }
@@ -266,7 +280,7 @@
 
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1; transform: none; transition: none; }
-      .card-profile, .card-review, .blob, .marquee-track { animation: none; }
+      .card-profile, .card-review, .marquee-track { animation: none; }
     }
 
     /* Responsive */
@@ -304,11 +318,9 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
     <div class="container hero-grid">
       <div>
-        <span class="badge">🐴 Il LinkedIn del mondo equestre</span>
+        <span class="badge">✦ Il LinkedIn del mondo equestre</span>
         <h1>Il tuo maneggio merita <span class="rotor"><span class="word">le persone giuste</span></span>.</h1>
         <p class="lead">EquiConnect mette in contatto maneggi e professionisti del mondo equestre: groom, istruttori, cavalieri, maniscalchi e molto altro. Con recensioni verificate, per scegliere con fiducia.</p>
         <div class="hero-cta">
@@ -365,32 +377,32 @@
       </div>
       <div class="grid-3">
         <div class="cat-card">
-          <div class="cat-icon">🧹</div>
+          <div class="cat-num">01</div>
           <h3>Groom</h3>
           <p>Cura quotidiana dei cavalli, gestione box, preparazione per gare e trasferte.</p>
         </div>
         <div class="cat-card">
-          <div class="cat-icon">🎓</div>
+          <div class="cat-num">02</div>
           <h3>Istruttori</h3>
           <p>Tecnici federali per lezioni, corsi pony e preparazione agonistica in tutte le discipline.</p>
         </div>
         <div class="cat-card">
-          <div class="cat-icon">🏆</div>
+          <div class="cat-num">03</div>
           <h3>Cavalieri</h3>
           <p>Cavalieri e amazzoni per lavorare i cavalli, montare in gara o gestire il progetto sportivo.</p>
         </div>
         <div class="cat-card">
-          <div class="cat-icon">🔨</div>
+          <div class="cat-num">04</div>
           <h3>Maniscalchi</h3>
           <p>Ferrature e pareggi con professionisti qualificati e recensiti nella tua zona.</p>
         </div>
         <div class="cat-card">
-          <div class="cat-icon">🩺</div>
+          <div class="cat-num">05</div>
           <h3>Veterinari & Fisioterapisti</h3>
           <p>Specialisti equini per visite, dentistica, fisioterapia e medicina sportiva.</p>
         </div>
         <div class="cat-card">
-          <div class="cat-icon">🚛</div>
+          <div class="cat-num">06</div>
           <h3>Trasporti & Servizi</h3>
           <p>Trasportatori autorizzati, sellai, nutrizionisti e tutti i servizi per la scuderia.</p>
         </div>
@@ -426,25 +438,18 @@
     </div>
   </section>
 
+  <!-- BANDA EDITORIALE -->
+  <section class="editorial" aria-label="Citazione">
+    <img class="editorial-img" src="https://images.unsplash.com/photo-1594768816441-1dd241ffaa67?w=1920&q=75&auto=format&fit=crop" alt="" loading="lazy">
+    <div class="editorial-inner">
+      <p class="editorial-quote">«Dietro ogni grande cavallo c'è una squadra di persone che lavora bene.»</p>
+      <div class="editorial-sub">EquiConnect — Il mestiere, prima di tutto</div>
+    </div>
+  </section>
+
   <!-- RECENSIONI -->
   <section id="recensioni">
     <div class="container">
-      <div class="horse-figure" id="horse-art" aria-hidden="true">
-        <svg viewBox="0 0 420 360" xmlns="http://www.w3.org/2000/svg">
-          <!-- contorno superiore: muso, fronte, orecchie, criniera, collo -->
-          <path d="M62,178 C90,148 122,104 168,78 C174,74 179,72 184,70 L196,34 C199,28 205,28 207,34 L213,66 C219,61 225,58 231,59 L242,26 C245,20 251,20 253,26 L257,62 C298,78 330,110 348,160 C366,210 373,270 375,336"/>
-          <!-- contorno inferiore: labbra, mandibola, guancia, gola -->
-          <path d="M62,178 C50,192 46,206 56,214 C66,222 82,221 93,216 C118,236 158,246 190,240 C228,233 250,252 262,282 C272,306 281,324 289,336"/>
-          <!-- occhio -->
-          <path d="M148,130 a5,5 0 1 1 0.2,0"/>
-          <!-- narice -->
-          <path d="M76,196 c4,3 9,3 12,-1"/>
-          <!-- criniera -->
-          <path class="mane" d="M262,76 C300,98 322,130 334,170"/>
-          <path class="mane" d="M250,98 C282,120 300,148 308,186"/>
-          <path class="mane" d="M238,118 C264,138 277,162 283,198"/>
-        </svg>
-      </div>
       <div class="section-head">
         <div class="kicker">Dicono di noi</div>
         <h2>La fiducia si costruisce con le recensioni</h2>
@@ -550,34 +555,6 @@
     return el.getBoundingClientRect().top < vh * 0.92;
   }
 
-  // Cavallo line-art che si disegna allo scroll
-  var horseArt = document.getElementById('horse-art');
-  var horsePaths = [], horseTotal = 0;
-  if (horseArt) {
-    horseArt.querySelectorAll('path').forEach(function (p) {
-      var len = p.getTotalLength();
-      p.style.strokeDasharray = len;
-      p.style.strokeDashoffset = reduced ? 0 : len;
-      horsePaths.push({ el: p, len: len, start: horseTotal });
-      horseTotal += len;
-    });
-  }
-
-  function drawHorse() {
-    if (!horseArt || reduced) return;
-    var vh = window.innerHeight || document.documentElement.clientHeight;
-    var progress = 1;
-    if (vh) {
-      var r = horseArt.getBoundingClientRect();
-      progress = Math.max(0, Math.min(1, (vh - r.top) / (vh * 0.75)));
-    }
-    var drawn = horseTotal * progress;
-    horsePaths.forEach(function (p) {
-      var d = Math.max(0, Math.min(p.len, drawn - p.start));
-      p.el.style.strokeDashoffset = p.len - d;
-    });
-  }
-
   function checkReveals() {
     targets = targets.filter(function (el) {
       if (inView(el)) { el.classList.add('visible'); return false; }
@@ -587,7 +564,6 @@
       countersStarted = true;
       counters.forEach(animateCounter);
     }
-    drawHorse();
   }
 
   if (reduced) {
