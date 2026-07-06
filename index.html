@@ -154,6 +154,37 @@
     .cat-card h3 { font-size: 20px; color: var(--verde-scuro); margin-bottom: 8px; }
     .cat-card p { font-size: 14.5px; color: var(--testo-soft); }
 
+    /* Demo ricerca */
+    .demo { background: var(--sabbia); }
+    .demo-bar { display: flex; gap: 14px; align-items: center; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+    .demo-bar select {
+      padding: 13px 20px; border-radius: 999px; min-width: 190px;
+      border: 1px solid rgba(38, 35, 30, 0.25); background: var(--bianco);
+      font: 500 15px 'Inter', sans-serif; color: var(--testo); outline: none; cursor: pointer;
+    }
+    .demo-bar select:focus { border-color: var(--cuoio); }
+    .demo-count { font-size: 13.5px; color: var(--testo-soft); font-style: italic; }
+    .demo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .demo-card {
+      background: var(--bianco); border-radius: 18px; padding: 26px;
+      border: 1px solid rgba(38, 35, 30, 0.08); display: flex; flex-direction: column;
+    }
+    .demo-card .row { display: flex; gap: 14px; align-items: center; margin-bottom: 12px; }
+    .demo-card .avatar {
+      width: 48px; height: 48px; border-radius: 50%; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--cuoio), var(--oro));
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Fraunces', serif; font-size: 18px; color: var(--bianco); font-weight: 600;
+    }
+    .demo-card h3 { font-size: 18px; color: var(--verde-scuro); }
+    .demo-card .role { font-size: 13.5px; color: var(--testo-soft); }
+    .demo-card .stars { font-size: 13px; margin-bottom: 4px; }
+    .demo-card .tags { margin: 12px 0 18px; }
+    .demo-card .btn { margin-top: auto; text-align: center; padding: 11px 20px; font-size: 14px; }
+    .demo-empty { grid-column: 1 / -1; text-align: center; color: var(--testo-soft); font-style: italic; padding: 48px 0; }
+    .demo-note { text-align: center; font-size: 13px; color: var(--testo-soft); margin-top: 28px; }
+    .cat-card { cursor: pointer; }
+
     /* Come funziona */
     .come-funziona { background: var(--verde); }
     .come-funziona .kicker { color: var(--oro); }
@@ -287,7 +318,7 @@
     /* Responsive */
     @media (max-width: 900px) {
       .hero-grid { grid-template-columns: 1fr; gap: 48px; }
-      .grid-3 { grid-template-columns: 1fr; }
+      .grid-3, .demo-grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
       .card-review { position: static; margin-top: 16px; max-width: none; }
       .rotor { white-space: normal; }
@@ -379,37 +410,71 @@
         <p>Dalla gestione quotidiana della scuderia alle competizioni: cerca per ruolo, zona e disponibilità.</p>
       </div>
       <div class="grid-3">
-        <div class="cat-card">
+        <div class="cat-card" data-role="groom">
           <div class="cat-num">01</div>
           <h3>Groom</h3>
           <p>Cura quotidiana dei cavalli, gestione box, preparazione per gare e trasferte.</p>
         </div>
-        <div class="cat-card">
+        <div class="cat-card" data-role="istruttore">
           <div class="cat-num">02</div>
           <h3>Istruttori</h3>
           <p>Tecnici federali per lezioni, corsi pony e preparazione agonistica in tutte le discipline.</p>
         </div>
-        <div class="cat-card">
+        <div class="cat-card" data-role="cavaliere">
           <div class="cat-num">03</div>
           <h3>Cavalieri</h3>
           <p>Cavalieri e amazzoni per lavorare i cavalli, montare in gara o gestire il progetto sportivo.</p>
         </div>
-        <div class="cat-card">
+        <div class="cat-card" data-role="maniscalco">
           <div class="cat-num">04</div>
           <h3>Maniscalchi</h3>
           <p>Ferrature e pareggi con professionisti qualificati e recensiti nella tua zona.</p>
         </div>
-        <div class="cat-card">
+        <div class="cat-card" data-role="veterinario">
           <div class="cat-num">05</div>
           <h3>Veterinari & Fisioterapisti</h3>
           <p>Specialisti equini per visite, dentistica, fisioterapia e medicina sportiva.</p>
         </div>
-        <div class="cat-card">
+        <div class="cat-card" data-role="trasportatore">
           <div class="cat-num">06</div>
           <h3>Trasporti & Servizi</h3>
           <p>Trasportatori autorizzati, sellai, nutrizionisti e tutti i servizi per la scuderia.</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- DEMO RICERCA -->
+  <section class="demo" id="cerca">
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">Provalo subito</div>
+        <h2>Cerca un professionista</h2>
+        <p>Un assaggio di come funzionerà: filtra per ruolo e regione e sfoglia i profili.</p>
+      </div>
+      <div class="demo-bar">
+        <select id="demo-role" aria-label="Filtra per ruolo">
+          <option value="">Tutti i ruoli</option>
+          <option value="groom">Groom</option>
+          <option value="istruttore">Istruttori</option>
+          <option value="cavaliere">Cavalieri</option>
+          <option value="maniscalco">Maniscalchi</option>
+          <option value="veterinario">Veterinari</option>
+          <option value="trasportatore">Trasportatori</option>
+        </select>
+        <select id="demo-region" aria-label="Filtra per regione">
+          <option value="">Tutta Italia</option>
+          <option>Emilia-Romagna</option>
+          <option>Lazio</option>
+          <option>Lombardia</option>
+          <option>Piemonte</option>
+          <option>Toscana</option>
+          <option>Veneto</option>
+        </select>
+        <div class="demo-count" id="demo-count"></div>
+      </div>
+      <div class="demo-grid" id="demo-results"></div>
+      <p class="demo-note">Profili dimostrativi. Al lancio troverai professionisti veri, con recensioni verificate.</p>
     </div>
   </section>
 
@@ -640,6 +705,70 @@
       form.innerHTML = '<p style="font-size:17px;font-weight:600;">🐴 Grazie! Ti scriveremo presto.</p>';
     });
   }
+
+  // Demo ricerca professionisti
+  var pros = [
+    { n: 'Giulia Marchetti', r: 'groom', rl: 'Groom professionista', reg: 'Veneto', city: 'Verona', stars: 4.9, rev: 27, tags: ['Gestione scuderia', 'Trasferte gara'], disp: true },
+    { n: 'Luca Ferrari', r: 'maniscalco', rl: 'Maniscalco', reg: 'Lombardia', city: 'Brescia', stars: 4.8, rev: 41, tags: ['Ferratura sportiva', 'Pareggio'], disp: true },
+    { n: 'Elena Ricci', r: 'istruttore', rl: 'Istruttrice FISE 2° livello', reg: 'Toscana', city: 'Arezzo', stars: 5.0, rev: 33, tags: ['Salto ostacoli', 'Pony club'], disp: false },
+    { n: 'Marco Colombo', r: 'cavaliere', rl: 'Cavaliere professionista', reg: 'Lombardia', city: 'Milano', stars: 4.7, rev: 19, tags: ['Lavoro in piano', 'Giovani cavalli'], disp: true },
+    { n: 'Sara Esposito', r: 'veterinario', rl: 'Veterinaria equina', reg: 'Lazio', city: 'Roma', stars: 4.9, rev: 52, tags: ['Medicina sportiva', 'Dentistica'], disp: true },
+    { n: 'Andrea Moretti', r: 'trasportatore', rl: 'Trasportatore autorizzato', reg: 'Emilia-Romagna', city: 'Modena', stars: 4.6, rev: 24, tags: ['Trasporti nazionali', 'Van 2 posti'], disp: true },
+    { n: 'Francesca Galli', r: 'groom', rl: 'Groom', reg: 'Piemonte', city: 'Torino', stars: 4.8, rev: 15, tags: ['Pronto soccorso equino', 'Gare FEI'], disp: false },
+    { n: 'Paolo Rinaldi', r: 'istruttore', rl: 'Istruttore FISE 1° livello', reg: 'Veneto', city: 'Padova', stars: 4.5, rev: 22, tags: ['Dressage', 'Principianti'], disp: true },
+    { n: 'Chiara Fontana', r: 'cavaliere', rl: 'Amazzone', reg: 'Toscana', city: 'Siena', stars: 4.9, rev: 31, tags: ['Completo', 'Gare regionali'], disp: true }
+  ];
+  var roleSel = document.getElementById('demo-role');
+  var regionSel = document.getElementById('demo-region');
+  var demoGrid = document.getElementById('demo-results');
+  var demoCount = document.getElementById('demo-count');
+
+  function starsHtml(v) {
+    var full = Math.round(v);
+    return '★★★★★'.slice(0, full) + '☆☆☆☆☆'.slice(0, 5 - full);
+  }
+
+  function proCard(p) {
+    var initials = p.n.split(' ').map(function (w) { return w[0]; }).join('');
+    var tags = p.tags.map(function (t) { return '<span class="tag">' + t + '</span>'; }).join('');
+    if (p.disp) tags += '<span class="tag" style="background:rgba(158,118,71,0.15);color:var(--cuoio-scuro);">Disponibile</span>';
+    return '<div class="demo-card">' +
+      '<div class="row"><div class="avatar">' + initials + '</div>' +
+      '<div><h3>' + p.n + '</h3><div class="role">' + p.rl + ' · ' + p.city + '</div></div></div>' +
+      '<div class="stars">' + starsHtml(p.stars) + ' <span>' + String(p.stars).replace('.', ',') + ' · ' + p.rev + ' recensioni</span></div>' +
+      '<div class="tags">' + tags + '</div>' +
+      '<a href="#iscriviti" class="btn btn-primary">Contatta ' + p.n.split(' ')[0] + '</a>' +
+      '</div>';
+  }
+
+  function renderDemo() {
+    if (!demoGrid) return;
+    var role = roleSel.value, reg = regionSel.value;
+    var list = pros.filter(function (p) {
+      return (!role || p.r === role) && (!reg || p.reg === reg);
+    });
+    demoCount.textContent = list.length === 1 ? '1 profilo trovato' : list.length + ' profili trovati';
+    demoGrid.innerHTML = list.length
+      ? list.map(proCard).join('')
+      : '<div class="demo-empty">Nessun profilo in questa zona, per ora. Al lancio copriremo tutta Italia.</div>';
+  }
+
+  if (demoGrid) {
+    roleSel.addEventListener('change', renderDemo);
+    regionSel.addEventListener('change', renderDemo);
+    renderDemo();
+  }
+
+  // Card categorie → aprono la demo già filtrata
+  document.querySelectorAll('.cat-card[data-role]').forEach(function (card) {
+    card.addEventListener('click', function () {
+      if (!roleSel) return;
+      roleSel.value = card.dataset.role;
+      regionSel.value = '';
+      renderDemo();
+      document.getElementById('cerca').scrollIntoView({ behavior: 'smooth' });
+    });
+  });
 
   // Parole rotanti nel titolo
   var phrases = ['le persone giuste', 'groom affidabili', 'istruttori esperti', 'cavalieri vincenti', 'mani sicure'];
