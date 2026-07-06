@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Staffa — La rete professionale del mondo equestre</title>
+  <meta name="description" content="Staffa collega maneggi e professionisti equestri: groom, istruttori, cavalieri, maniscalchi e veterinari. Con recensioni verificate.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --verde: #2E4B3C;
+      --verde-scuro: #1F3529;
+      --crema: #FAF6EF;
+      --sabbia: #F0E8D9;
+      --cuoio: #B07D4F;
+      --cuoio-scuro: #8F6039;
+      --testo: #2B2B26;
+      --testo-soft: #6B6B60;
+      --bianco: #FFFFFF;
+      --oro: #E3A93C;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--testo);
+      background: var(--crema);
+      line-height: 1.6;
+    }
+    h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; line-height: 1.15; }
+    a { color: inherit; text-decoration: none; }
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── Header ─────────────────────────── */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(250, 246, 239, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(46, 75, 60, 0.1);
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 24px; max-width: 1120px; margin: 0 auto;
+    }
+    .logo {
+      display: flex; align-items: center; gap: 10px;
+      font-family: 'Fraunces', serif; font-size: 24px; font-weight: 700;
+      color: var(--verde);
+    }
+    .logo svg { width: 32px; height: 32px; }
+    .nav-links { display: flex; gap: 32px; align-items: center; font-size: 15px; font-weight: 500; color: var(--testo-soft); }
+    .nav-links a:hover { color: var(--verde); }
+    .btn {
+      display: inline-block; padding: 12px 26px; border-radius: 999px;
+      font-weight: 600; font-size: 15px; cursor: pointer; border: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      font-family: 'Inter', sans-serif;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--verde); color: var(--bianco); box-shadow: 0 4px 14px rgba(46, 75, 60, 0.3); }
+    .btn-primary:hover { background: var(--verde-scuro); }
+    .btn-ghost { background: transparent; color: var(--verde); border: 1.5px solid var(--verde); }
+    .btn-cuoio { background: var(--cuoio); color: var(--bianco); box-shadow: 0 4px 14px rgba(176, 125, 79, 0.35); }
+    .btn-cuoio:hover { background: var(--cuoio-scuro); }
+    .btn-lg { padding: 16px 36px; font-size: 17px; }
+
+    /* ── Hero ───────────────────────────── */
+    .hero {
+      padding: 80px 0 160px;
+      background:
+        radial-gradient(ellipse 800px 500px at 85% 10%, rgba(227, 169, 60, 0.12), transparent),
+        radial-gradient(ellipse 600px 400px at 10% 90%, rgba(46, 75, 60, 0.08), transparent);
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: center; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--sabbia); color: var(--cuoio-scuro);
+      padding: 8px 16px; border-radius: 999px;
+      font-size: 13px; font-weight: 600; letter-spacing: 0.02em;
+      margin-bottom: 24px;
+    }
+    .hero h1 { font-size: clamp(38px, 5vw, 58px); font-weight: 600; color: var(--verde-scuro); margin-bottom: 20px; }
+    .hero h1 em { font-style: italic; color: var(--cuoio); }
+    .hero p.lead { font-size: 19px; color: var(--testo-soft); max-width: 480px; margin-bottom: 32px; }
+    .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 36px; }
+    .hero-proof { display: flex; gap: 32px; font-size: 14px; color: var(--testo-soft); }
+    .hero-proof strong { display: block; font-size: 24px; font-family: 'Fraunces', serif; color: var(--verde); }
+
+    /* Hero card mockup */
+    .hero-visual { position: relative; }
+    .card-profile {
+      background: var(--bianco); border-radius: 20px; padding: 28px;
+      box-shadow: 0 20px 60px rgba(43, 43, 38, 0.12);
+      border: 1px solid rgba(46, 75, 60, 0.08);
+    }
+    .card-profile .avatar {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--cuoio), var(--oro));
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Fraunces', serif; font-size: 26px; color: var(--bianco); font-weight: 600;
+    }
+    .card-profile .row { display: flex; gap: 16px; align-items: center; margin-bottom: 18px; }
+    .card-profile h3 { font-size: 20px; color: var(--verde-scuro); }
+    .card-profile .role { font-size: 14px; color: var(--testo-soft); }
+    .stars { color: var(--oro); font-size: 15px; letter-spacing: 2px; }
+    .stars span { color: var(--testo-soft); font-size: 13px; letter-spacing: 0; margin-left: 6px; }
+    .tags { display: flex; gap: 8px; flex-wrap: wrap; margin: 16px 0; }
+    .tag { background: var(--sabbia); color: var(--verde); font-size: 12.5px; font-weight: 600; padding: 6px 12px; border-radius: 999px; }
+    .card-review {
+      background: var(--verde); color: var(--crema);
+      border-radius: 16px; padding: 20px 24px;
+      position: absolute; bottom: -120px; left: -32px; max-width: 320px;
+      box-shadow: 0 16px 40px rgba(31, 53, 41, 0.35);
+      font-size: 14px;
+    }
+    .card-review .stars { font-size: 13px; margin-bottom: 6px; }
+    .card-review .who { margin-top: 10px; font-size: 12.5px; opacity: 0.75; }
+
+    /* ── Sections ───────────────────────── */
+    section { padding: 88px 0; }
+    .section-head { text-align: center; max-width: 640px; margin: 0 auto 56px; }
+    .kicker { font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cuoio); margin-bottom: 12px; }
+    .section-head h2 { font-size: clamp(30px, 4vw, 42px); font-weight: 600; color: var(--verde-scuro); margin-bottom: 16px; }
+    .section-head p { color: var(--testo-soft); font-size: 17px; }
+
+    /* Categorie */
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .cat-card {
+      background: var(--bianco); border-radius: 18px; padding: 32px 28px;
+      border: 1px solid rgba(46, 75, 60, 0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .cat-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(43, 43, 38, 0.1); }
+    .cat-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      background: var(--sabbia); display: flex; align-items: center; justify-content: center;
+      font-size: 26px; margin-bottom: 18px;
+    }
+    .cat-card h3 { font-size: 20px; color: var(--verde-scuro); margin-bottom: 8px; }
+    .cat-card p { font-size: 14.5px; color: var(--testo-soft); }
+
+    /* Come funziona */
+    .come-funziona { background: var(--verde); }
+    .come-funziona .kicker { color: var(--oro); }
+    .come-funziona .section-head h2 { color: var(--crema); }
+    .come-funziona .section-head p { color: rgba(250, 246, 239, 0.7); }
+    .step {
+      background: rgba(250, 246, 239, 0.06);
+      border: 1px solid rgba(250, 246, 239, 0.14);
+      border-radius: 18px; padding: 32px 28px;
+    }
+    .step-num {
+      font-family: 'Fraunces', serif; font-size: 44px; font-weight: 700;
+      color: var(--oro); line-height: 1; margin-bottom: 16px;
+    }
+    .step h3 { font-size: 20px; color: var(--crema); margin-bottom: 10px; }
+    .step p { font-size: 14.5px; color: rgba(250, 246, 239, 0.72); }
+
+    /* Recensioni */
+    .rev-card {
+      background: var(--bianco); border-radius: 18px; padding: 28px;
+      border: 1px solid rgba(46, 75, 60, 0.08);
+      display: flex; flex-direction: column; gap: 14px;
+    }
+    .rev-card p.quote { font-size: 15px; color: var(--testo); font-style: italic; }
+    .rev-who { display: flex; align-items: center; gap: 12px; margin-top: auto; }
+    .rev-who .avatar {
+      width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Fraunces', serif; color: var(--bianco); font-weight: 600;
+    }
+    .rev-who strong { display: block; font-size: 14.5px; color: var(--verde-scuro); }
+    .rev-who span { font-size: 13px; color: var(--testo-soft); }
+
+    /* CTA finale */
+    .cta-final {
+      background: linear-gradient(135deg, var(--cuoio), var(--cuoio-scuro));
+      border-radius: 28px; padding: 72px 48px; text-align: center; color: var(--bianco);
+      position: relative; overflow: hidden;
+    }
+    .cta-final::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 500px 300px at 80% 20%, rgba(227, 169, 60, 0.3), transparent);
+    }
+    .cta-final > * { position: relative; }
+    .cta-final h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 600; margin-bottom: 16px; }
+    .cta-final p { font-size: 17px; opacity: 0.85; max-width: 520px; margin: 0 auto 32px; }
+    .cta-form { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .cta-form input {
+      padding: 15px 22px; border-radius: 999px; border: none; outline: none;
+      font-size: 15px; font-family: 'Inter', sans-serif; width: 320px; max-width: 100%;
+    }
+    .cta-form .btn { background: var(--verde-scuro); color: var(--bianco); }
+    .cta-note { font-size: 13px; opacity: 0.7; margin-top: 16px !important; }
+
+    /* Footer */
+    footer { padding: 48px 0; border-top: 1px solid rgba(46, 75, 60, 0.1); }
+    .footer-grid { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+    footer .logo { font-size: 20px; }
+    footer p { font-size: 13.5px; color: var(--testo-soft); }
+    .footer-links { display: flex; gap: 24px; font-size: 14px; color: var(--testo-soft); }
+    .footer-links a:hover { color: var(--verde); }
+
+    /* ── Animazioni ─────────────────────── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1); transition-delay: var(--d, 0s); }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @keyframes float-a { from { transform: translateY(0); } to { transform: translateY(-12px); } }
+    @keyframes float-b { from { transform: translateY(0); } to { transform: translateY(-8px); } }
+    .card-profile { animation: float-a 5s ease-in-out infinite alternate; }
+    .card-review { animation: float-b 4s ease-in-out 1s infinite alternate; }
+
+    /* blob decorativi hero */
+    .hero { position: relative; overflow: hidden; }
+    .blob { position: absolute; border-radius: 50%; filter: blur(70px); pointer-events: none; z-index: 0; }
+    .blob-1 { width: 380px; height: 380px; background: rgba(227, 169, 60, 0.22); top: -80px; right: -60px; animation: drift-1 14s ease-in-out infinite alternate; }
+    .blob-2 { width: 320px; height: 320px; background: rgba(46, 75, 60, 0.14); bottom: -60px; left: -80px; animation: drift-2 18s ease-in-out infinite alternate; }
+    @keyframes drift-1 { from { transform: translate(0, 0) scale(1); } to { transform: translate(-60px, 50px) scale(1.15); } }
+    @keyframes drift-2 { from { transform: translate(0, 0) scale(1); } to { transform: translate(70px, -40px) scale(1.1); } }
+    .hero .container { position: relative; z-index: 1; }
+
+    /* parola rotante nel titolo */
+    .rotor { display: inline-block; position: relative; color: var(--cuoio); font-style: italic; white-space: nowrap; }
+    .rotor .word { display: inline-block; transition: opacity 0.35s ease, transform 0.35s ease; }
+    .rotor .word.out { opacity: 0; transform: translateY(-14px); }
+    .rotor .word.in { opacity: 0; transform: translateY(14px); transition: none; }
+    .rotor::after { content: ''; position: absolute; left: 0; right: 0; bottom: 4px; height: 3px; background: var(--oro); border-radius: 2px; opacity: 0.6; }
+
+    /* marquee professioni */
+    .marquee { background: var(--verde); padding: 18px 0; overflow: hidden; white-space: nowrap; }
+    .marquee-track { display: inline-block; animation: marquee 28s linear infinite; }
+    .marquee span { font-family: 'Fraunces', serif; font-size: 17px; color: var(--crema); opacity: 0.9; margin: 0 18px; letter-spacing: 0.04em; }
+    .marquee span em { font-style: normal; color: var(--oro); margin-left: 36px; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* header con ombra allo scroll */
+    header { transition: box-shadow 0.3s ease; }
+    header.scrolled { box-shadow: 0 6px 24px rgba(43, 43, 38, 0.08); }
+
+    /* icone categorie animate all'hover */
+    .cat-card .cat-icon { transition: transform 0.25s ease; }
+    .cat-card:hover .cat-icon { transform: rotate(-8deg) scale(1.15); }
+
+    /* cavallo line-art disegnato allo scroll */
+    .horse-figure { display: flex; justify-content: center; margin-bottom: 4px; }
+    .horse-figure svg { width: min(300px, 65vw); height: auto; overflow: visible; }
+    .horse-figure path { fill: none; stroke: var(--verde); stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
+    .horse-figure .mane { stroke: var(--oro); stroke-width: 3; }
+
+    /* parallax hero */
+    .hero-visual { transition: transform 0.25s ease-out; will-change: transform; }
+
+    /* coriandoli iscrizione */
+    .confetto {
+      position: absolute; left: 50%; top: 55%; font-size: 24px;
+      pointer-events: none; z-index: 3;
+      animation: burst var(--dur, 1.2s) cubic-bezier(0.2, 0.6, 0.4, 1) forwards;
+    }
+    @keyframes burst {
+      0% { opacity: 1; transform: translate(0, 0) rotate(0) scale(0.6); }
+      20% { transform: translate(calc(var(--dx) * 0.4), calc(var(--dy) * 0.55)) rotate(calc(var(--rot) * 0.4)) scale(1.1); }
+      100% { opacity: 0; transform: translate(var(--dx), calc(var(--dy) * 0.2 + 120px)) rotate(var(--rot)) scale(1); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .card-profile, .card-review, .blob, .marquee-track { animation: none; }
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .card-review { position: static; margin-top: 16px; max-width: none; }
+      .rotor { white-space: normal; }
+      section { padding: 64px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav class="nav">
+      <a href="#" class="logo">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 3C9 3 5 8 5 14c0 5 3 8 5 9v4a2 2 0 002 2h2v-4h4v4h2a2 2 0 002-2v-4c2-1 5-4 5-9 0-6-4-11-11-11z" fill="#2E4B3C"/>
+          <circle cx="12.5" cy="13" r="1.6" fill="#FAF6EF"/>
+          <circle cx="19.5" cy="13" r="1.6" fill="#FAF6EF"/>
+          <path d="M13 19c1 1 5 1 6 0" stroke="#E3A93C" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        Staffa
+      </a>
+      <div class="nav-links">
+        <a href="#professionisti">Professionisti</a>
+        <a href="#come-funziona">Come funziona</a>
+        <a href="#recensioni">Recensioni</a>
+        <a href="#iscriviti" class="btn btn-primary">Iscriviti gratis</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="container hero-grid">
+      <div>
+        <span class="badge">🐴 La prima rete professionale equestre in Italia</span>
+        <h1>Il tuo maneggio merita <span class="rotor"><span class="word">le persone giuste</span></span>.</h1>
+        <p class="lead">Staffa mette in contatto maneggi e professionisti del mondo equestre: groom, istruttori, cavalieri, maniscalchi e molto altro. Con recensioni verificate, per scegliere con fiducia.</p>
+        <div class="hero-cta">
+          <a href="#iscriviti" class="btn btn-cuoio btn-lg">Registra il tuo maneggio</a>
+          <a href="#iscriviti" class="btn btn-ghost btn-lg">Sono un professionista</a>
+        </div>
+        <div class="hero-proof">
+          <div><strong class="counter" data-target="500" data-suffix="+">0+</strong> professionisti</div>
+          <div><strong class="counter" data-target="120" data-suffix="+">0+</strong> maneggi</div>
+          <div><strong class="counter" data-target="4.8" data-decimal="1" data-suffix="/5">0/5</strong> valutazione media</div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="card-profile">
+          <div class="row">
+            <div class="avatar">GM</div>
+            <div>
+              <h3>Giulia Marchetti</h3>
+              <div class="role">Groom professionista · Verona</div>
+            </div>
+          </div>
+          <div class="stars">★★★★★ <span>4,9 · 27 recensioni</span></div>
+          <div class="tags">
+            <span class="tag">Gestione scuderia</span>
+            <span class="tag">Pronto soccorso equino</span>
+            <span class="tag">Trasferte gara</span>
+            <span class="tag">Disponibile subito</span>
+          </div>
+          <a href="#iscriviti" class="btn btn-primary" style="width:100%; text-align:center;">Contatta Giulia</a>
+        </div>
+        <div class="card-review">
+          <div class="stars">★★★★★</div>
+          "Professionale, puntuale e con una passione vera per i cavalli. La richiameremo per la prossima stagione."
+          <div class="who">— Scuderia La Quercia, Verona</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Groom <em>✦</em></span><span>Istruttori <em>✦</em></span><span>Cavalieri <em>✦</em></span><span>Maniscalchi <em>✦</em></span><span>Veterinari <em>✦</em></span><span>Fisioterapisti <em>✦</em></span><span>Trasportatori <em>✦</em></span><span>Sellai <em>✦</em></span><span>Nutrizionisti <em>✦</em></span><span>Groom <em>✦</em></span><span>Istruttori <em>✦</em></span><span>Cavalieri <em>✦</em></span><span>Maniscalchi <em>✦</em></span><span>Veterinari <em>✦</em></span><span>Fisioterapisti <em>✦</em></span><span>Trasportatori <em>✦</em></span><span>Sellai <em>✦</em></span><span>Nutrizionisti <em>✦</em></span>
+    </div>
+  </div>
+
+  <!-- PROFESSIONISTI -->
+  <section id="professionisti">
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">Chi trovi su Staffa</div>
+        <h2>Tutte le figure di cui un maneggio ha bisogno</h2>
+        <p>Dalla gestione quotidiana della scuderia alle competizioni: cerca per ruolo, zona e disponibilità.</p>
+      </div>
+      <div class="grid-3">
+        <div class="cat-card">
+          <div class="cat-icon">🧹</div>
+          <h3>Groom</h3>
+          <p>Cura quotidiana dei cavalli, gestione box, preparazione per gare e trasferte.</p>
+        </div>
+        <div class="cat-card">
+          <div class="cat-icon">🎓</div>
+          <h3>Istruttori</h3>
+          <p>Tecnici federali per lezioni, corsi pony e preparazione agonistica in tutte le discipline.</p>
+        </div>
+        <div class="cat-card">
+          <div class="cat-icon">🏆</div>
+          <h3>Cavalieri</h3>
+          <p>Cavalieri e amazzoni per lavorare i cavalli, montare in gara o gestire il progetto sportivo.</p>
+        </div>
+        <div class="cat-card">
+          <div class="cat-icon">🔨</div>
+          <h3>Maniscalchi</h3>
+          <p>Ferrature e pareggi con professionisti qualificati e recensiti nella tua zona.</p>
+        </div>
+        <div class="cat-card">
+          <div class="cat-icon">🩺</div>
+          <h3>Veterinari & Fisioterapisti</h3>
+          <p>Specialisti equini per visite, dentistica, fisioterapia e medicina sportiva.</p>
+        </div>
+        <div class="cat-card">
+          <div class="cat-icon">🚛</div>
+          <h3>Trasporti & Servizi</h3>
+          <p>Trasportatori autorizzati, sellai, nutrizionisti e tutti i servizi per la scuderia.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COME FUNZIONA -->
+  <section class="come-funziona" id="come-funziona">
+    <div class="container">
+      <div class="section-head">
+        <div class="kicker">Come funziona</div>
+        <h2>Trova la persona giusta in tre passi</h2>
+        <p>Semplice per i maneggi, gratuito per i professionisti che vogliono farsi trovare.</p>
+      </div>
+      <div class="grid-3">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h3>Crea il profilo</h3>
+          <p>Maneggio o professionista: racconta chi sei, cosa cerchi o cosa sai fare, con esperienze e certificazioni.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h3>Cerca e contatta</h3>
+          <p>Filtra per ruolo, zona, disponibilità e valutazioni. Scrivi direttamente in chat, senza intermediari.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h3>Lavora e recensisci</h3>
+          <p>Dopo la collaborazione, lasciate una recensione reciproca. Le valutazioni verificate premiano chi lavora bene.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECENSIONI -->
+  <section id="recensioni">
+    <div class="container">
+      <div class="horse-figure" id="horse-art" aria-hidden="true">
+        <svg viewBox="0 0 420 360" xmlns="http://www.w3.org/2000/svg">
+          <!-- contorno superiore: muso, fronte, orecchie, criniera, collo -->
+          <path d="M62,178 C90,148 122,104 168,78 C174,74 179,72 184,70 L196,34 C199,28 205,28 207,34 L213,66 C219,61 225,58 231,59 L242,26 C245,20 251,20 253,26 L257,62 C298,78 330,110 348,160 C366,210 373,270 375,336"/>
+          <!-- contorno inferiore: labbra, mandibola, guancia, gola -->
+          <path d="M62,178 C50,192 46,206 56,214 C66,222 82,221 93,216 C118,236 158,246 190,240 C228,233 250,252 262,282 C272,306 281,324 289,336"/>
+          <!-- occhio -->
+          <path d="M148,130 a5,5 0 1 1 0.2,0"/>
+          <!-- narice -->
+          <path d="M76,196 c4,3 9,3 12,-1"/>
+          <!-- criniera -->
+          <path class="mane" d="M262,76 C300,98 322,130 334,170"/>
+          <path class="mane" d="M250,98 C282,120 300,148 308,186"/>
+          <path class="mane" d="M238,118 C264,138 277,162 283,198"/>
+        </svg>
+      </div>
+      <div class="section-head">
+        <div class="kicker">Dicono di noi</div>
+        <h2>La fiducia si costruisce con le recensioni</h2>
+        <p>Ogni valutazione arriva solo da collaborazioni reali, confermate da entrambe le parti.</p>
+      </div>
+      <div class="grid-3">
+        <div class="rev-card">
+          <div class="stars">★★★★★</div>
+          <p class="quote">"Cercavamo un groom per la stagione di gare da mesi. Su Staffa in una settimana avevamo tre candidati seri, tutti con recensioni verificabili."</p>
+          <div class="rev-who">
+            <div class="avatar" style="background:#2E4B3C;">MR</div>
+            <div><strong>Marco Rossi</strong><span>Titolare, Centro Ippico San Giorgio</span></div>
+          </div>
+        </div>
+        <div class="rev-card">
+          <div class="stars">★★★★★</div>
+          <p class="quote">"Da istruttrice freelance, il profilo Staffa è diventato il mio biglietto da visita. Le recensioni dei maneggi valgono più di qualsiasi curriculum."</p>
+          <div class="rev-who">
+            <div class="avatar" style="background:#B07D4F;">EF</div>
+            <div><strong>Elena Ferri</strong><span>Istruttrice FISE 2° livello</span></div>
+          </div>
+        </div>
+        <div class="rev-card">
+          <div class="stars">★★★★☆</div>
+          <p class="quote">"Ho trovato un maniscalco eccellente a 20 km da noi che non conoscevamo. Il sistema di zone e disponibilità funziona davvero bene."</p>
+          <div class="rev-who">
+            <div class="avatar" style="background:#E3A93C;">LB</div>
+            <div><strong>Laura Bianchi</strong><span>Gestrice, Agriturismo Le Betulle</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINALE -->
+  <section id="iscriviti">
+    <div class="container">
+      <div class="cta-final">
+        <h2>Entra nella rete equestre italiana</h2>
+        <p>Lascia la tua email: ti avviseremo al lancio e avrai 6 mesi di funzionalità premium gratis come membro fondatore.</p>
+        <form class="cta-form">
+          <input type="email" placeholder="La tua email" required>
+          <button type="submit" class="btn btn-lg">Avvisami al lancio</button>
+        </form>
+        <p class="cta-note">Gratis per sempre per i professionisti. Nessuno spam, promesso.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-grid">
+      <a href="#" class="logo">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:26px;height:26px;">
+          <path d="M16 3C9 3 5 8 5 14c0 5 3 8 5 9v4a2 2 0 002 2h2v-4h4v4h2a2 2 0 002-2v-4c2-1 5-4 5-9 0-6-4-11-11-11z" fill="#2E4B3C"/>
+          <circle cx="12.5" cy="13" r="1.6" fill="#FAF6EF"/>
+          <circle cx="19.5" cy="13" r="1.6" fill="#FAF6EF"/>
+          <path d="M13 19c1 1 5 1 6 0" stroke="#E3A93C" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        Staffa
+      </a>
+      <div class="footer-links">
+        <a href="#professionisti">Professionisti</a>
+        <a href="#come-funziona">Come funziona</a>
+        <a href="#iscriviti">Contatti</a>
+      </div>
+      <p>© 2026 Staffa · La rete professionale del mondo equestre</p>
+    </div>
+  </footer>
+
+<script>
+(function () {
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Ombra header allo scroll
+  var header = document.querySelector('header');
+  window.addEventListener('scroll', function () {
+    header.classList.toggle('scrolled', window.scrollY > 10);
+  }, { passive: true });
+
+  // Reveal allo scroll con stagger per i gruppi di card
+  var groups = ['.grid-3', '.section-head', '.hero-cta', '.hero-proof'];
+  var targets = [];
+  groups.forEach(function (sel) {
+    document.querySelectorAll(sel).forEach(function (el) {
+      if (el.classList.contains('grid-3')) {
+        Array.prototype.forEach.call(el.children, function (child, i) {
+          child.classList.add('reveal');
+          child.style.setProperty('--d', (i * 0.09) + 's');
+          targets.push(child);
+        });
+      } else {
+        el.classList.add('reveal');
+        targets.push(el);
+      }
+    });
+  });
+  var counters = document.querySelectorAll('.counter');
+  var countersStarted = false;
+
+  function inView(el) {
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    if (!vh) return true; // viewport non misurabile: meglio mostrare che nascondere
+    return el.getBoundingClientRect().top < vh * 0.92;
+  }
+
+  // Cavallo line-art che si disegna allo scroll
+  var horseArt = document.getElementById('horse-art');
+  var horsePaths = [], horseTotal = 0;
+  if (horseArt) {
+    horseArt.querySelectorAll('path').forEach(function (p) {
+      var len = p.getTotalLength();
+      p.style.strokeDasharray = len;
+      p.style.strokeDashoffset = reduced ? 0 : len;
+      horsePaths.push({ el: p, len: len, start: horseTotal });
+      horseTotal += len;
+    });
+  }
+
+  function drawHorse() {
+    if (!horseArt || reduced) return;
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    var progress = 1;
+    if (vh) {
+      var r = horseArt.getBoundingClientRect();
+      progress = Math.max(0, Math.min(1, (vh - r.top) / (vh * 0.75)));
+    }
+    var drawn = horseTotal * progress;
+    horsePaths.forEach(function (p) {
+      var d = Math.max(0, Math.min(p.len, drawn - p.start));
+      p.el.style.strokeDashoffset = p.len - d;
+    });
+  }
+
+  function checkReveals() {
+    targets = targets.filter(function (el) {
+      if (inView(el)) { el.classList.add('visible'); return false; }
+      return true;
+    });
+    if (!countersStarted && counters.length && inView(counters[0])) {
+      countersStarted = true;
+      counters.forEach(animateCounter);
+    }
+    drawHorse();
+  }
+
+  if (reduced) {
+    targets.forEach(function (el) { el.classList.add('visible'); });
+  } else {
+    window.addEventListener('scroll', checkReveals, { passive: true });
+    window.addEventListener('resize', checkReveals);
+    window.addEventListener('load', checkReveals);
+    checkReveals();
+    setTimeout(checkReveals, 150);
+    setTimeout(checkReveals, 600);
+  }
+
+  // Contatori animati
+  function animateCounter(el) {
+    var target = parseFloat(el.dataset.target);
+    var decimals = parseInt(el.dataset.decimal || '0', 10);
+    var suffix = el.dataset.suffix || '';
+    var dur = 1400, start = Date.now();
+    var timer = setInterval(function () {
+      var p = Math.min((Date.now() - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = (target * eased).toFixed(decimals).replace('.', ',') + suffix;
+      if (p >= 1) clearInterval(timer);
+    }, 30);
+  }
+  if (reduced) {
+    counters.forEach(function (el) {
+      var d = parseInt(el.dataset.decimal || '0', 10);
+      el.textContent = parseFloat(el.dataset.target).toFixed(d).replace('.', ',') + (el.dataset.suffix || '');
+    });
+  }
+
+  // Parallax al mouse sulla hero
+  var hero = document.querySelector('.hero');
+  var heroVisual = document.querySelector('.hero-visual');
+  if (hero && heroVisual && !reduced) {
+    hero.addEventListener('mousemove', function (e) {
+      if (!window.matchMedia('(pointer: fine)').matches) return;
+      var r = hero.getBoundingClientRect();
+      if (!r.width || !r.height) return;
+      var x = (e.clientX - r.left) / r.width - 0.5;
+      var y = (e.clientY - r.top) / r.height - 0.5;
+      heroVisual.style.transform = 'perspective(900px) rotateY(' + (x * 6).toFixed(2) + 'deg) rotateX(' + (-y * 5).toFixed(2) + 'deg)';
+    });
+    hero.addEventListener('mouseleave', function () { heroVisual.style.transform = ''; });
+  }
+
+  // Form: messaggio di conferma + coriandoli equestri
+  var form = document.querySelector('.cta-form');
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var box = form.closest('.cta-final');
+      if (box && !reduced) {
+        var emojis = ['🐴', '✨', '🥕', '⭐', '🐎'];
+        for (var i = 0; i < 22; i++) {
+          var c = document.createElement('span');
+          c.className = 'confetto';
+          c.textContent = emojis[i % emojis.length];
+          c.style.setProperty('--dx', (Math.random() * 520 - 260).toFixed(0) + 'px');
+          c.style.setProperty('--dy', (-80 - Math.random() * 260).toFixed(0) + 'px');
+          c.style.setProperty('--rot', (Math.random() * 520 - 260).toFixed(0) + 'deg');
+          c.style.setProperty('--dur', (1 + Math.random() * 0.9).toFixed(2) + 's');
+          box.appendChild(c);
+          setTimeout(function (el) { el.remove(); }.bind(null, c), 2200);
+        }
+      }
+      form.innerHTML = '<p style="font-size:17px;font-weight:600;">🐴 Grazie! Ti scriveremo presto.</p>';
+    });
+  }
+
+  // Parole rotanti nel titolo
+  var phrases = ['le persone giuste', 'groom affidabili', 'istruttori esperti', 'cavalieri vincenti', 'mani sicure'];
+  var rotor = document.querySelector('.rotor .word');
+  if (rotor && !reduced) {
+    var idx = 0;
+    setInterval(function () {
+      rotor.classList.add('out');
+      setTimeout(function () {
+        idx = (idx + 1) % phrases.length;
+        rotor.textContent = phrases[idx];
+        rotor.classList.remove('out');
+        rotor.classList.add('in');
+        void rotor.offsetWidth; // forza il reflow così lo stato "in" viene applicato
+        rotor.classList.remove('in');
+      }, 360);
+    }, 3200);
+  }
+})();
+</script>
+</body>
+</html>
