@@ -10,16 +10,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --verde: #2E4B3C;
-      --verde-scuro: #1F3529;
-      --crema: #FAF6EF;
-      --sabbia: #F0E8D9;
-      --cuoio: #B07D4F;
-      --cuoio-scuro: #8F6039;
-      --testo: #2B2B26;
-      --testo-soft: #6B6B60;
+      /* palette luxury: carbone, avorio, ottone, cuoio */
+      --verde: #26231E;        /* carbone caldo (ex verde) */
+      --verde-scuro: #161411;  /* quasi nero */
+      --crema: #F6F3EC;        /* avorio */
+      --sabbia: #EAE4D6;
+      --cuoio: #9E7647;        /* cuoio sella */
+      --cuoio-scuro: #7E5D38;
+      --testo: #201E1A;
+      --testo-soft: #6E6A60;
       --bianco: #FFFFFF;
-      --oro: #E3A93C;
+      --oro: #C9A56A;          /* ottone champagne */
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -38,7 +39,7 @@
       position: sticky; top: 0; z-index: 50;
       background: rgba(250, 246, 239, 0.92);
       backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(46, 75, 60, 0.1);
+      border-bottom: 1px solid rgba(38, 35, 30, 0.1);
     }
     .nav {
       display: flex; align-items: center; justify-content: space-between;
@@ -59,10 +60,10 @@
       font-family: 'Inter', sans-serif;
     }
     .btn:hover { transform: translateY(-2px); }
-    .btn-primary { background: var(--verde); color: var(--bianco); box-shadow: 0 4px 14px rgba(46, 75, 60, 0.3); }
+    .btn-primary { background: var(--verde); color: var(--bianco); box-shadow: 0 4px 14px rgba(38, 35, 30, 0.3); }
     .btn-primary:hover { background: var(--verde-scuro); }
     .btn-ghost { background: transparent; color: var(--verde); border: 1.5px solid var(--verde); }
-    .btn-cuoio { background: var(--cuoio); color: var(--bianco); box-shadow: 0 4px 14px rgba(176, 125, 79, 0.35); }
+    .btn-cuoio { background: var(--cuoio); color: var(--bianco); box-shadow: 0 4px 14px rgba(158, 118, 71, 0.35); }
     .btn-cuoio:hover { background: var(--cuoio-scuro); }
     .btn-lg { padding: 16px 36px; font-size: 17px; }
 
@@ -70,14 +71,14 @@
     .hero {
       padding: 96px 0 170px;
       background:
-        linear-gradient(rgba(16, 27, 21, 0.72), rgba(16, 27, 21, 0.84)),
-        url('https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=1920&q=75&auto=format&fit=crop') center / cover no-repeat;
+        linear-gradient(rgba(13, 12, 10, 0.5), rgba(13, 12, 10, 0.76)),
+        url('https://images.unsplash.com/photo-1599053581540-248ea75b59cb?w=1920&q=75&auto=format&fit=crop') center / cover no-repeat;
     }
     .hero h1 { color: var(--crema) !important; }
     .hero p.lead { color: rgba(250, 246, 239, 0.78); }
     .hero .badge {
       background: rgba(250, 246, 239, 0.08); color: var(--oro);
-      border: 1px solid rgba(227, 169, 60, 0.4);
+      border: 1px solid rgba(201, 165, 106, 0.5);
       text-transform: uppercase; letter-spacing: 0.14em; font-size: 11.5px;
     }
     .hero .btn-ghost { border-color: rgba(250, 246, 239, 0.5); color: var(--crema); }
@@ -104,7 +105,7 @@
     .card-profile {
       background: var(--bianco); border-radius: 20px; padding: 28px;
       box-shadow: 0 20px 60px rgba(43, 43, 38, 0.12);
-      border: 1px solid rgba(46, 75, 60, 0.08);
+      border: 1px solid rgba(38, 35, 30, 0.08);
     }
     .card-profile .avatar {
       width: 64px; height: 64px; border-radius: 50%;
@@ -123,7 +124,7 @@
       background: var(--verde); color: var(--crema);
       border-radius: 16px; padding: 20px 24px;
       position: absolute; bottom: -150px; left: 28px; max-width: 320px;
-      box-shadow: 0 16px 40px rgba(31, 53, 41, 0.35);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
       font-size: 14px;
     }
     .card-review .stars { font-size: 13px; margin-bottom: 6px; }
@@ -140,7 +141,7 @@
     .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
     .cat-card {
       background: var(--bianco); border-radius: 18px; padding: 32px 28px;
-      border: 1px solid rgba(46, 75, 60, 0.08);
+      border: 1px solid rgba(38, 35, 30, 0.08);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
     .cat-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(43, 43, 38, 0.1); }
@@ -149,7 +150,7 @@
       color: var(--oro); letter-spacing: 0.18em; margin-bottom: 16px;
       display: flex; align-items: center; gap: 12px;
     }
-    .cat-num::after { content: ''; flex: 1; height: 1px; background: rgba(46, 75, 60, 0.15); }
+    .cat-num::after { content: ''; flex: 1; height: 1px; background: rgba(38, 35, 30, 0.15); }
     .cat-card h3 { font-size: 20px; color: var(--verde-scuro); margin-bottom: 8px; }
     .cat-card p { font-size: 14.5px; color: var(--testo-soft); }
 
@@ -173,7 +174,7 @@
     /* Recensioni */
     .rev-card {
       background: var(--bianco); border-radius: 18px; padding: 28px;
-      border: 1px solid rgba(46, 75, 60, 0.08);
+      border: 1px solid rgba(38, 35, 30, 0.08);
       display: flex; flex-direction: column; gap: 14px;
     }
     .rev-card p.quote { font-size: 15px; color: var(--testo); font-style: italic; }
@@ -189,14 +190,14 @@
     /* CTA finale */
     .cta-final {
       background:
-        linear-gradient(rgba(24, 38, 30, 0.78), rgba(24, 38, 30, 0.85)),
+        linear-gradient(rgba(17, 15, 13, 0.78), rgba(17, 15, 13, 0.86)),
         url('https://images.unsplash.com/photo-1598974357801-cbca100e65d3?w=1600&q=75&auto=format&fit=crop') center / cover no-repeat;
       border-radius: 28px; padding: 80px 48px; text-align: center; color: var(--crema);
       position: relative; overflow: hidden;
     }
     .cta-final::before {
       content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse 500px 300px at 80% 20%, rgba(227, 169, 60, 0.3), transparent);
+      background: radial-gradient(ellipse 500px 300px at 80% 20%, rgba(201, 165, 106, 0.22), transparent);
     }
     .cta-final > * { position: relative; }
     .cta-final h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 600; margin-bottom: 16px; }
@@ -210,7 +211,7 @@
     .cta-note { font-size: 13px; opacity: 0.7; margin-top: 16px !important; }
 
     /* Footer */
-    footer { padding: 48px 0; border-top: 1px solid rgba(46, 75, 60, 0.1); }
+    footer { padding: 48px 0; border-top: 1px solid rgba(38, 35, 30, 0.1); }
     .footer-grid { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
     footer .logo { font-size: 20px; }
     footer p { font-size: 13.5px; color: var(--testo-soft); }
@@ -300,10 +301,10 @@
     <nav class="nav">
       <a href="#" class="logo">
         <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M16 3C9 3 5 8 5 14c0 5 3 8 5 9v4a2 2 0 002 2h2v-4h4v4h2a2 2 0 002-2v-4c2-1 5-4 5-9 0-6-4-11-11-11z" fill="#2E4B3C"/>
+          <path d="M16 3C9 3 5 8 5 14c0 5 3 8 5 9v4a2 2 0 002 2h2v-4h4v4h2a2 2 0 002-2v-4c2-1 5-4 5-9 0-6-4-11-11-11z" fill="#26231E"/>
           <circle cx="12.5" cy="13" r="1.6" fill="#FAF6EF"/>
           <circle cx="19.5" cy="13" r="1.6" fill="#FAF6EF"/>
-          <path d="M13 19c1 1 5 1 6 0" stroke="#E3A93C" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M13 19c1 1 5 1 6 0" stroke="#C9A56A" stroke-width="1.8" stroke-linecap="round"/>
         </svg>
         EquiConnect
       </a>
@@ -460,7 +461,7 @@
           <div class="stars">★★★★★</div>
           <p class="quote">"Cercavamo un groom per la stagione di gare da mesi. Su EquiConnect in una settimana avevamo tre candidati seri, tutti con recensioni verificabili."</p>
           <div class="rev-who">
-            <div class="avatar" style="background:#2E4B3C;">MR</div>
+            <div class="avatar" style="background:#26231E;">MR</div>
             <div><strong>Marco Rossi</strong><span>Titolare, Centro Ippico San Giorgio</span></div>
           </div>
         </div>
@@ -468,7 +469,7 @@
           <div class="stars">★★★★★</div>
           <p class="quote">"Da istruttrice freelance, il profilo EquiConnect è diventato il mio biglietto da visita. Le recensioni dei maneggi valgono più di qualsiasi curriculum."</p>
           <div class="rev-who">
-            <div class="avatar" style="background:#B07D4F;">EF</div>
+            <div class="avatar" style="background:#9E7647;">EF</div>
             <div><strong>Elena Ferri</strong><span>Istruttrice FISE 2° livello</span></div>
           </div>
         </div>
@@ -476,7 +477,7 @@
           <div class="stars">★★★★☆</div>
           <p class="quote">"Ho trovato un maniscalco eccellente a 20 km da noi che non conoscevamo. Il sistema di zone e disponibilità funziona davvero bene."</p>
           <div class="rev-who">
-            <div class="avatar" style="background:#E3A93C;">LB</div>
+            <div class="avatar" style="background:#C9A56A;">LB</div>
             <div><strong>Laura Bianchi</strong><span>Gestrice, Agriturismo Le Betulle</span></div>
           </div>
         </div>
@@ -503,10 +504,10 @@
     <div class="container footer-grid">
       <a href="#" class="logo">
         <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:26px;height:26px;">
-          <path d="M16 3C9 3 5 8 5 14c0 5 3 8 5 9v4a2 2 0 002 2h2v-4h4v4h2a2 2 0 002-2v-4c2-1 5-4 5-9 0-6-4-11-11-11z" fill="#2E4B3C"/>
+          <path d="M16 3C9 3 5 8 5 14c0 5 3 8 5 9v4a2 2 0 002 2h2v-4h4v4h2a2 2 0 002-2v-4c2-1 5-4 5-9 0-6-4-11-11-11z" fill="#26231E"/>
           <circle cx="12.5" cy="13" r="1.6" fill="#FAF6EF"/>
           <circle cx="19.5" cy="13" r="1.6" fill="#FAF6EF"/>
-          <path d="M13 19c1 1 5 1 6 0" stroke="#E3A93C" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M13 19c1 1 5 1 6 0" stroke="#C9A56A" stroke-width="1.8" stroke-linecap="round"/>
         </svg>
         EquiConnect
       </a>
